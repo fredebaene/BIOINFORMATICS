@@ -12,3 +12,12 @@ def validate_dna_sequence(sequence):
             return False
     
     return True
+
+def count_dna_nucleotides(sequence):
+
+    if validate_dna_sequence(sequence) != True:
+        error_message = "Please enter a valid DNA sequence."
+        return error_message
+    else:
+        length_of_dna_sequence = len(sequence)
+        return length_of_dna_sequence
