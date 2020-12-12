@@ -1,6 +1,5 @@
 from test import *
 
-sequence = input("Please enter your DNA sequence: ")
+print("This is the main file.")
 
-print(validate_dna_sequence(sequence))
-print(count_dna_nucleotides(sequence))
+print(calculate_number_of_rabbit_pairs_TWO(84, 19))
