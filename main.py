@@ -1,5 +1,6 @@
 from test import *
+from dna import *
 
-print("This is the main file.")
+sequence = "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
 
-print(calculate_number_of_rabbit_pairs_TWO(84, 19))
+print(calculat_gc_content(sequence))
