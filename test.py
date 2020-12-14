@@ -89,3 +89,6 @@ def calculate_number_of_rabbit_pairs_TWO(n, m):
                 B[z] = 0
         number_of_rabbit_pairs = sum(A)
         return number_of_rabbit_pairs
+
+with open("fasta_01.txt") as fasta:
+    print(fasta.readlines())
