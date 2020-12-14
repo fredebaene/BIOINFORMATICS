@@ -74,3 +74,11 @@ def transcribe_dna_sequence(sequence):
         for i in range(len(sequence)):
             rna_sequence = rna_sequence + mapping_of_nucleotides[sequence[i]]
         return rna_sequence
+ 
+def calculat_gc_content(sequence):
+
+     nucleotide_count = calculate_nucleotide_occurrences(sequence)
+     gc_count = nucleotide_count["C"] + nucleotide_count["G"]
+     total_count = nucleotide_count["A"] + nucleotide_count["C"] + nucleotide_count["G"] + nucleotide_count["T"]
+     gc_content = round((gc_count / total_count) * 100, 6)
+     return gc_content

@@ -1,6 +1,6 @@
 from test import *
 from dna import *
 
-sequence = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC"
+sequence = "CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT"
 
-output_nucleotide_occurrences(sequence)
+print(calculat_gc_content(sequence))
