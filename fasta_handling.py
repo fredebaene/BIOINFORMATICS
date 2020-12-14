@@ -1,3 +1,5 @@
+from dna import *
+
 def read_fasta_file(fasta_file_directory):
 
     with open(fasta_file_directory) as f:
@@ -23,8 +25,19 @@ def read_fasta_file(fasta_file_directory):
                     description = fasta[i].split(" ", 1)[1][:-1]
                 
             else:
-                sequence += fasta[i][:-1]
+
+                    if i < len(fasta) - 1:
+                        sequence += fasta[i][:-1]
+                    else:
+                        sequence += fasta[i]
         
         labeled_sequences[label] = [description, sequence]
+    
+    return labeled_sequences
+
+def add_gc_content(labeled_sequences):
+
+    for k, v in labeled_sequences.items():
+        v.append(calculate_gc_content(v[1]))
     
     return labeled_sequences
