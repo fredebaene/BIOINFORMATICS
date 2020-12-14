@@ -1,5 +1,6 @@
 from test import *
+from dna import *
 
-print("This is the main file.")
+sequence = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC"
 
-print(calculate_number_of_rabbit_pairs_TWO(84, 19))
+output_nucleotide_occurrences(sequence)
