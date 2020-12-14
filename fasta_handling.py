@@ -24,5 +24,7 @@ def read_fasta_file(fasta_file_directory):
                 
             else:
                 sequence += fasta[i][:-1]
+        
+        labeled_sequences[label] = [description, sequence]
     
     return labeled_sequences
