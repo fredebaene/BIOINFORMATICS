@@ -75,7 +75,7 @@ def transcribe_dna_sequence(sequence):
             rna_sequence = rna_sequence + mapping_of_nucleotides[sequence[i]]
         return rna_sequence
  
-def calculat_gc_content(sequence):
+def calculate_gc_content(sequence):
 
      nucleotide_count = calculate_nucleotide_occurrences(sequence)
      gc_count = nucleotide_count["C"] + nucleotide_count["G"]
