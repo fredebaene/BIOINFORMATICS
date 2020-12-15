@@ -41,3 +41,14 @@ def add_gc_content(labeled_sequences):
         v.append(calculate_gc_content(v[1]))
     
     return labeled_sequences
+
+def output_highest_gc_content(labeled_sequences):
+
+    labels = []
+    gc_contents = []
+
+    for k, v in labeled_sequences.items():
+        labels.append(k)
+        gc_contents.append(v[2])
+
+    return print(str(labels[gc_contents.index(max(gc_contents))]) + "\n" + str(max(gc_contents)))
