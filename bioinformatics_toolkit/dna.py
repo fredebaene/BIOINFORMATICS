@@ -126,7 +126,6 @@ def find_motif_in_sequence(sequence, motif):
 
 def find_profile_and_consensus(fasta_file_directory):
 
-    ffd = fasta_file_directory
     sequences = fasta_file_handling.read_fasta_file(fasta_file_directory)
 
     sequence_overview = list(sequences)
@@ -168,3 +167,55 @@ def output_find_consensus_and_profile(fasta_file_directory):
             message += " " + str(result[1][i, j])
 
     print(message)
+
+def find_shared_motif(fasta_file_directory):
+
+    sequences = fasta_file_handling.read_fasta_file(fasta_file_directory)
+    sequence_overview = list(sequences)
+    base_sequence = ""
+    base_sequence_index = 0
+    base_sequence_length = 0
+
+    for i in range(len(sequence_overview)):
+        
+        if i == 0:
+            base_sequence = sequences[sequence_overview[i]][1]
+            base_sequence_index = i
+            base_sequence_length = len(base_sequence)
+       
+        else:
+
+            if len(sequences[sequence_overview[i]][1]) < base_sequence_length:
+                base_sequence = sequences[sequence_overview[i]][1]
+                base_sequence_index = i
+                base_sequence_length = len(base_sequence)
+    
+    number_of_lengths = len(base_sequence) - 1
+    subsequences = []
+
+    for i in range(number_of_lengths):
+        
+        if len(subsequences) > 0:
+
+            return subsequences
+       
+        else:
+
+            subseq_length = base_sequence_length - i
+
+            for j in range(base_sequence_length - subseq_length + 1):
+                subsequence = base_sequence[j: j + subseq_length]
+                included = True
+                
+                for k in range(len(sequence_overview)):
+                    if not subsequence in sequences[sequence_overview[k]][1]:
+                        included = False
+
+                if included == True:
+                    subsequences.append(subsequence)
+            
+            if included == True:
+                return subsequences
+
+    error_message = "There is no common motif."
+    return error_message

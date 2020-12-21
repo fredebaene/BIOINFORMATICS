@@ -1,5 +1,7 @@
 from bioinformatics_toolkit import dna
+from bioinformatics_toolkit import fasta_file_handling
 
 ffd = "fasta.txt"
 
-dna.output_find_consensus_and_profile(ffd)
+result = dna.find_shared_motif(ffd)
+print(result)
