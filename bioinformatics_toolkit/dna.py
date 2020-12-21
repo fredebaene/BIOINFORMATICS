@@ -1,15 +1,22 @@
 def validate_sequence(sequence):
+    
     dna_nucleotides = ["A", "C", "G", "T"]
+    
     for i in range(len(sequence)):
         if sequence[i].upper() not in dna_nucleotides:
             return False
+    
     return True
 
 def calculate_sequence_length(sequence):
+    
     if validate_sequence(sequence) != True:
+        
         error_message = "Please enter a valid DNA sequence."
         return error_message
+    
     else:
+        
         length_of_sequence = len(sequence)
         return length_of_sequence
 
@@ -40,12 +47,17 @@ def transcribe_dna_sequence(sequence):
     mapping_of_nucleotides = {"A" : "A", "C" : "C", "G" : "G", "T" : "U"}
 
     if validate_dna_sequence(sequence) != True:
+        
         error_message = "Please enter a valid DNA sequence."
         return error_message
+    
     else:
+        
         rna_sequence = ""
+        
         for i in range(len(sequence)):
             rna_sequence = rna_sequence + mapping_of_nucleotides[sequence[i]]
+        
         return rna_sequence
  
 def calculate_gc_content(sequence):

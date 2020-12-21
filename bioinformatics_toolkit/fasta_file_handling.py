@@ -1,4 +1,4 @@
-from dna import *
+from bioinformatics_toolkit import dna
 
 def read_fasta_file(fasta_file_directory):
 
