@@ -95,4 +95,28 @@ def translation(mrna_sequence):
             protein += translation_dictionary[codon]
             codon_pos += 3
     
-    return protein    
+    return protein
+
+def find_motif_in_sequence(sequence, motif):
+
+    if validate_sequence(sequence) != True or validate_sequence(motif) != True:
+
+        error_message = "Please enter a valid DNA sequence."
+        return error_message
+    
+    elif len(motif) > len(sequence):
+        
+        error_message = "The motif length cannot be greater than the sequence length."
+        return error_message
+    
+    else:
+        
+        positions = []
+        end = len(sequence) - len(motif) + 1
+
+        for i in range(end):
+
+            if sequence[i:i + len(motif)] == motif:
+                positions.append(i + 1)
+        
+        return positions
