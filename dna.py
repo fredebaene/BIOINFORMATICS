@@ -1,42 +1,15 @@
-"""
-A DNA sequence is valid if and only if it contains zero or more of the following nucleotides :
-
-    - ADENINE (A)
-    - CYTOSINE (C)
-    - GUANINE (G)
-    - THYMINE (T)
-
-The following function checks if the nucleotides in a given DNA sequence are no other than the ones mentioned above :
-
-- if the sequence is valid, then the return value is TRUE
-- if the sequence is not valid, then the return value is FALSE.
-"""
-
 def validate_sequence(sequence):
-
     dna_nucleotides = ["A", "C", "G", "T"]
-    
     for i in range(len(sequence)):
         if sequence[i].upper() not in dna_nucleotides:
             return False
-    
     return True
 
-"""
-The length of a DNA sequence is expressed as the number of nucleotides (or the number of base pairs). A base pair consists out of two nucleotides bonded together via its bases.
-
-The following functionc calculates the length of a given DNA sequence if and only if the DNA sequence is valid. The return value of the function is an integer denoting the length of the DNA sequence expressed as the number of nucleotides.
-"""
-
 def calculate_sequence_length(sequence):
-
     if validate_sequence(sequence) != True:
-
         error_message = "Please enter a valid DNA sequence."
         return error_message
-
     else:
-
         length_of_sequence = len(sequence)
         return length_of_sequence
 
@@ -82,3 +55,14 @@ def calculate_gc_content(sequence):
      total_count = nucleotide_count["A"] + nucleotide_count["C"] + nucleotide_count["G"] + nucleotide_count["T"]
      gc_content = round((gc_count / total_count) * 100, 6)
      return gc_content
+
+def calculate_hamming_distance(sequence_a, sequence_b):
+
+    hamming_distance = 0
+
+    for i in range(len(sequence_a)):
+
+        if sequence_a[i] != sequence_b[i]:
+            hamming_distance += 1
+    
+    return hamming_distance

@@ -1,0 +1,34 @@
+validate_sequence(sequence)
+---------------------------
+
+A DNA sequence is valid if and only if it contains one or more of the following nucleotides :
+
+    - ADENINE (A)
+    - CYTOSINE (C)
+    - GUANINE (G)
+    - THYMINE (T)
+
+The function checks if the nucleotides in a given DNA sequence are no other than the ones mentioned above :
+
+- if the sequence is valid, then the return value is TRUE
+- if the sequence is not valid, then the return value is FALSE.
+
+calculate_sequence_length(sequence)
+-----------------------------------
+
+The length of a DNA sequence is expressed as the number of nucleotides (or the number of base pairs). A base pair consists out of two nucleotides bonded together via its bases.
+
+The function calculates the length of a given DNA sequence if and only if the DNA sequence is valid. The return value of the function is an integer denoting the length of the DNA sequence expressed as the number of nucleotides.
+
+calculate_hamming_distance(sequence_a, sequence_b)
+--------------------------------------------------
+
+Given two valid DNA sequences of the same length, the hamming distance is the number of nucleobases in which these two DNA sequences differ at their respective position.
+
+For example :
+- sequence_a = "ACATTACAG"
+- sequence_b = "AGATTACAG"
+
+These two DNA sequences only differ in their nucleobases at the second nucleotide, in sequence_a it is "C", and in sequence_b it is "G". In this case, the hamming distance is 1.
+
+The return value of this function is an integer indicating the hamming distance between two DNA sequences of equal length.
