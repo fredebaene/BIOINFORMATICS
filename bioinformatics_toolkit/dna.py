@@ -1,3 +1,6 @@
+from bioinformatics_toolkit import fasta_file_handling
+import numpy as np
+
 def validate_sequence(sequence):
     
     dna_nucleotides = ["A", "C", "G", "T"]
@@ -120,3 +123,48 @@ def find_motif_in_sequence(sequence, motif):
                 positions.append(i + 1)
         
         return positions
+
+def find_profile_and_consensus(fasta_file_directory):
+
+    ffd = fasta_file_directory
+    sequences = fasta_file_handling.read_fasta_file(fasta_file_directory)
+
+    sequence_overview = list(sequences)
+
+    sequences_array = np.zeros((len(sequences), len(sequences[list(sequences)[0]][1])), dtype = "U1")
+    profile = np.zeros((4, len(sequences[list(sequences)[0]][1])), dtype = "int32")
+    nucleotides = ["A", "C", "G", "T"]
+    consensus_string = ""
+
+    for i in range(len(sequence_overview)):
+        for j in range(len(sequences[sequence_overview[i]][1])):
+            sequences_array[i, j] = sequences[sequence_overview[i]][1][j]
+
+    for i in range(len(sequences_array)):
+        for j in range(len(sequences_array[0, :])):
+            profile[nucleotides.index(sequences_array[i, j]), j] += 1
+
+    for j in range(len(sequences_array[0, :])):
+        
+        result = np.where(profile[:, j] == max(profile[:, j]))
+        consensus_string += nucleotides[result[0][0]]
+
+    result = [consensus_string, profile]
+
+    return result
+
+def output_find_consensus_and_profile(fasta_file_directory):
+
+    result = find_profile_and_consensus(fasta_file_directory)
+    nucleotides = ["A", "C", "G", "T"]
+    message = result[0]
+
+    for i in range(len(nucleotides)):
+        
+        message += "\n"
+        message += nucleotides[i] + ":"
+        
+        for j in range(len(result[1][0, :])):
+            message += " " + str(result[1][i, j])
+
+    print(message)
