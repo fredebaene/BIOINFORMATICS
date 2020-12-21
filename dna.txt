@@ -1,24 +1,36 @@
 validate_sequence(sequence)
 ---------------------------
 
-A DNA sequence is valid if and only if it contains one or more of the following nucleotides :
+A string can be considered a valid representation of a DNA sequence if and only if all of the characters in the string are one of the following characters :
 
-    - ADENINE (A)
-    - CYTOSINE (C)
-    - GUANINE (G)
-    - THYMINE (T)
+- A : adenine
+- C : cytosine
+- G : guanine
+- T : thymine.
 
-The function checks if the nucleotides in a given DNA sequence are no other than the ones mentioned above :
+The function returns a boolean value :
 
-- if the sequence is valid, then the return value is TRUE
-- if the sequence is not valid, then the return value is FALSE.
+- TRUE : the given string is a valid representation of a DNA sequence
+- FALSE : the given string is not a valid representation of a DNA sequence.
 
 calculate_sequence_length(sequence)
 -----------------------------------
 
-The length of a DNA sequence is expressed as the number of nucleotides (or the number of base pairs). A base pair consists out of two nucleotides bonded together via its bases.
+The length of a DNA sequence is expressed as the number of nucleotides (or the number of base pairs) it consists out of. A base pair consists out of two nucleotides from different DNA strands bonded together via its bases. The function calculates the length of a given DNA sequence if and only if the DNA sequence is valid.
 
-The function calculates the length of a given DNA sequence if and only if the DNA sequence is valid. The return value of the function is an integer denoting the length of the DNA sequence expressed as the number of nucleotides.
+When the given string is not a valid representation of a DNA sequence, the function will return an error message : "Please enter a valid DNA sequence". When the given string is a valid representation of a DNA sequence, the function will return an integer representing the length of the DNA sequence expressed as the number of nucleotides it consists out of.
+
+calculate_nucleotide_occurrences(sequence)
+------------------------------------------
+
+A DNA sequence is an ordered collection of nucleotides. This function calculates the occurrence rate of each of the four possible nucleotides (A, C, G, T) in a given DNA sequence if and only if the given string is a valid representation of a DNA sequence.
+
+When the given string is not a valid representation of a DNA sequence, the function will return an error message : "Please enter a valid DNA sequence". When the given string is a valid representation of a DNA sequence, the function will return a dictionary of the form {"A" : a, "C" : c, "G" : g, "T" : t}, in which a, c, g, and t each represent the occurrence rate of the nucleotides A, C, G, and T, respectively.
+
+output_nucleotide_occurrences(sequence)
+---------------------------------------
+
+This function prints the nucleotide occurrence rates of a given DNA sequence as follows : a c g t.
 
 calculate_hamming_distance(sequence_a, sequence_b)
 --------------------------------------------------
