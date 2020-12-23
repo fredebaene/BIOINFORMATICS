@@ -52,29 +52,3 @@ def calculate_number_of_rabbit_pairs_TWO(n, m):
                 B[z] = 0
         number_of_rabbit_pairs = sum(A)
         return number_of_rabbit_pairs
-
-def probability_dominant_allele(k, m, n):
-    
-    # CALCULATING THE PROBABILITY THAT A CERTAIN COMBINATION WILL PRODUCE AN OFFSPRING WITH A DOMINANT ALLELE
-    k_k = 1
-    k_m = 1
-    k_n = 1
-    m_m = 0.75
-    m_n = 0.5
-    n_n = 0
-
-    # CALCULATING THE TOTAL NUMBER OF CONSIDERED ORGANISMS
-    total = k + m + n
-
-    # CALCULATING THE PROBABILITY A CERTAIN COMBINATION WILL OCCURR AND PRODUCE AN OFSSPRING WITH A DOMINANT ALLELE
-    prob_k_k = (k / total) * ((k - 1) / (total - 1)) * k_k
-    prob_k_m = (((k / total) * (m / (total - 1))) + ((m / total) * (k / (total - 1)))) * k_m
-    prob_k_n = (((k / total) * (n / (total - 1))) + ((n / total) * (k / (total - 1)))) * k_n
-    prob_m_m = (m / total) * ((m - 1) / (total - 1)) * m_m
-    prob_m_n = (((m / total) * (n / (total - 1))) + ((n / total) * (m / (total - 1)))) * m_n
-    prob_n_n = (n / total) * ((n - 1) / (total - 1)) * n_n
-
-    # CALCULATING THE OVERALL PROBABILITY
-    probability = round(prob_k_k + prob_k_m + prob_k_n + prob_m_m + prob_m_n + prob_n_n, 5)
-
-    return probability

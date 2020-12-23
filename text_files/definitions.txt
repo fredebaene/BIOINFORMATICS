@@ -21,3 +21,12 @@ DIFFERENT TYPES OF MUTATIONS
 RANDOM VARIABLE : A VARIABLE OF WHICH THE VALUE IS DETERMINED BY A RANDOM PROCESS
 
 EVENT : AN EVENT IS A COLLECTION OF OUTCOMES
+
+PROBABILITY
+===========
+
+KEY POINTS
+- RANDOM VARIABLE : A VARIABLE OF WHICH THE VALUE DEPENDS ON A RANDOM PROCESS
+- EVENT : A COLLECTION OF OUTCOMES
+
+A random variable is a variable which can take any of a number of distinct outcomes depending on the result of a underlying random process. For example, there's a bucket with five balls in it, 3 red balls and 2 blue balls. The random variable X represents the color of a ball drawn blindly from the bucket. The distinct outcomes in this scenario are: (i) the color of the ball is red, (ii) the color of the ball is blue.
