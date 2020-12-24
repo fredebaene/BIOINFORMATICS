@@ -1,6 +1,37 @@
 from bioinformatics_toolkit import fasta_file_handling
 import numpy as np
 
+class DNA(object):
+
+    def __init__(self, sequence):
+        
+        monomers = ["A", "C", "G", "T"]
+
+        for i in sequence:
+
+            if not i in monomers:
+
+                raise ValueError
+        
+        self.sequence = sequence
+        self.length = len(sequence)
+    
+    def __str__(self):
+
+        return self.sequence
+    
+    def transcribe_as_coding_strand(self):
+
+        mapping = {"A" : "A", "C" : "C", "G" : "G", "T" : "U"}
+        pre_mrna = ""
+
+        for i in self.sequence:
+
+            pre_mrna += mapping[i]
+        
+        return pre_mrna
+
+
 def validate_sequence(sequence):
     
     dna_nucleotides = ["A", "C", "G", "T"]
@@ -46,6 +77,14 @@ def output_nucleotide_occurrences(sequence):
     return print(output_message)
 
 def transcribe_dna_sequence(sequence):
+
+    # ROSALIND INFORMATION - TOPIC : STRING ALGORITHMS - ID : RNA - TITLE : TRANSCRIBING DNA INTO RNA
+
+    """
+
+    A DNA molecule consists out of two DNA strands : a template strand (antisense strand) and a coding strand (sense strand).
+
+    """
 
     mapping_of_nucleotides = {"A" : "A", "C" : "C", "G" : "G", "T" : "U"}
 
