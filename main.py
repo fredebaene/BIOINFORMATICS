@@ -2,8 +2,8 @@ from bioinformatics_toolkit import dna
 from bioinformatics_toolkit import fasta_file_handling
 from bioinformatics_toolkit import probability as prob
 
-k = 7
-n = 37
+sequence = "ATGGTCTACATAGCTGACAAACAGCACGTAGCAATCGGTCGAATCTCGAGAGGCATATGGTCACATGATCGGTCGAGCGTGTTTCAAAGTTTGCGCCTAG"
 
-result = round(prob.independent_alleles(k, n), 3)
-print(result)
+mrna = dna.transcribe_dna_sequence(sequence)
+print(sequence)
+print(mrna)

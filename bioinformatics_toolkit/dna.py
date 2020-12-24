@@ -49,7 +49,7 @@ def transcribe_dna_sequence(sequence):
 
     mapping_of_nucleotides = {"A" : "A", "C" : "C", "G" : "G", "T" : "U"}
 
-    if validate_dna_sequence(sequence) != True:
+    if validate_sequence(sequence) != True:
         
         error_message = "Please enter a valid DNA sequence."
         return error_message
@@ -58,8 +58,8 @@ def transcribe_dna_sequence(sequence):
         
         rna_sequence = ""
         
-        for i in range(len(sequence)):
-            rna_sequence = rna_sequence + mapping_of_nucleotides[sequence[i]]
+        for i in sequence:
+            rna_sequence = rna_sequence + mapping_of_nucleotides[i]
         
         return rna_sequence
  
