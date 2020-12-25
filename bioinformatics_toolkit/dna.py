@@ -54,22 +54,6 @@ def calculate_sequence_length(sequence):
         length_of_sequence = len(sequence)
         return length_of_sequence
 
-def calculate_nucleotide_occurrences(sequence):
-
-    if validate_sequence(sequence) != True:
-
-        error_message = "Please enter a valid DNA sequence."
-        return error_message
-
-    else:
-
-        nucleotide_count = {"A" : 0, "C" : 0, "G" : 0, "T" : 0}
-
-        for i in range(len(sequence)):
-            nucleotide_count[sequence[i].upper()] += 1
-
-        return nucleotide_count
-
 def output_nucleotide_occurrences(sequence):
 
     nucleotide_count = calculate_nucleotide_occurrences(sequence)
