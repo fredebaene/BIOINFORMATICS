@@ -30,61 +30,27 @@ class DNA(object):
             pre_mrna += mapping[i]
         
         return pre_mrna
-
-
-def validate_sequence(sequence):
     
-    dna_nucleotides = ["A", "C", "G", "T"]
-    
-    for i in range(len(sequence)):
-        if sequence[i].upper() not in dna_nucleotides:
-            return False
-    
-    return True
+    def nucleotide_occurrences(self):
 
-def calculate_sequence_length(sequence):
-    
-    if validate_sequence(sequence) != True:
-        
-        error_message = "Please enter a valid DNA sequence."
-        return error_message
-    
-    else:
-        
-        length_of_sequence = len(sequence)
-        return length_of_sequence
+        nucleotide_occurrences = {"A" : 0, "C" : 0, "G" : 0, "T" : 0}
 
-def output_nucleotide_occurrences(sequence):
-
-    nucleotide_count = calculate_nucleotide_occurrences(sequence)
-    output_message = str(nucleotide_count["A"]) + " " + str(nucleotide_count["C"]) + " " + str(nucleotide_count["G"]) + " " + str(nucleotide_count["T"])
-    return print(output_message)
-
-def transcribe_dna_sequence(sequence):
-
-    # ROSALIND INFORMATION - TOPIC : STRING ALGORITHMS - ID : RNA - TITLE : TRANSCRIBING DNA INTO RNA
-
-    """
-
-    A DNA molecule consists out of two DNA strands : a template strand (antisense strand) and a coding strand (sense strand).
-
-    """
-
-    mapping_of_nucleotides = {"A" : "A", "C" : "C", "G" : "G", "T" : "U"}
-
-    if validate_sequence(sequence) != True:
-        
-        error_message = "Please enter a valid DNA sequence."
-        return error_message
-    
-    else:
-        
-        rna_sequence = ""
-        
         for i in sequence:
-            rna_sequence = rna_sequence + mapping_of_nucleotides[i]
+            nucleotide_occurrences[i] += 1
+
+        return nucleotide_occurrences
+    
+    def reverse_complement(self):
+
+        mapping = {"A" : "T", "C" : "G", "G" : "C", "T" : "A"}
+        reverse_sequence = sequence[::-1]
+        reverse_complement = ""
+
+        for i in reverse_sequence:
+
+            reverse_complement += mapping[i]
         
-        return rna_sequence
+        return reverse_complement
  
 def calculate_gc_content(sequence):
 
