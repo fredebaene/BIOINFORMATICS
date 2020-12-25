@@ -258,3 +258,26 @@ def find_shared_motif(fasta_file_directory):
 
     error_message = "There is no common motif."
     return error_message
+
+def locate_restriction_sites(sequence):
+
+    if validate_sequence(sequence) != True:
+
+        error_message = "Please enter a valid DNA sequence."
+        return error_message
+    
+    else:
+        
+        subsequences = []
+
+        for length in range(4, 13):
+
+            for i in range(len(sequence) - length + 1):
+
+                subsequence = sequence[i:i + length]
+
+                if subsequence == reverse_complement(subsequence):
+
+                    subsequences.append([subsequence, i + 1, length])
+    
+        return subsequences
