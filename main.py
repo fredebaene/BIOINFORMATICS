@@ -2,8 +2,9 @@ from bioinformatics_toolkit import dna
 from bioinformatics_toolkit import fasta_file_handling
 from bioinformatics_toolkit import probability as prob
 
-k = 7
-n = 37
+sequence = dna.DNA("ATTGTC")
+premrna = sequence.transcribe_as_coding_strand()
 
-result = round(prob.independent_alleles(k, n), 3)
-print(result)
+print(sequence)
+print(sequence.length)
+print(premrna)
