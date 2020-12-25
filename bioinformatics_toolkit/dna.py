@@ -39,32 +39,18 @@ class DNA(object):
             nucleotide_occurrences[i] += 1
 
         return nucleotide_occurrences
-
-def transcribe_dna_sequence(sequence):
-
-    # ROSALIND INFORMATION - TOPIC : STRING ALGORITHMS - ID : RNA - TITLE : TRANSCRIBING DNA INTO RNA
-
-    """
-
-    A DNA molecule consists out of two DNA strands : a template strand (antisense strand) and a coding strand (sense strand).
-
-    """
-
-    mapping_of_nucleotides = {"A" : "A", "C" : "C", "G" : "G", "T" : "U"}
-
-    if validate_sequence(sequence) != True:
-        
-        error_message = "Please enter a valid DNA sequence."
-        return error_message
     
-    else:
+    def reverse_complement(self):
+
+        mapping = {"A" : "T", "C" : "G", "G" : "C", "T" : "A"}
+        reverse_sequence = sequence[::-1]
+        reverse_complement = ""
+
+        for i in reverse_sequence:
+
+            reverse_complement += mapping[i]
         
-        rna_sequence = ""
-        
-        for i in sequence:
-            rna_sequence = rna_sequence + mapping_of_nucleotides[i]
-        
-        return rna_sequence
+        return reverse_complement
  
 def calculate_gc_content(sequence):
 
