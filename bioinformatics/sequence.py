@@ -13,13 +13,10 @@ class Sequence(object): # a class is a blueprint describing the objects belongin
 
 # APPLICATION
 # ----------------------------------------------------------------------------------------------------
-seqOne = Sequence("ATATCGG") # the init method is run automatically whenever a new instance of a class is created
-seqTwo = Sequence("TATCGGTATCGCGCG")
+if __name__ == "__main__":
+    
+    seqOne = Sequence("ATATCGG") # the init method is run automatically whenever a new instance of a class is created
+    seqTwo = Sequence("TATCGGTATCGCGCG")
 
-sequence = seqOne.print_sequence()
-
-print(sequence)
-
-sequence = Sequence.print_sequence(seqOne)
-
-print(sequence)
+    for i in Sequence.elements:
+        print(i)
