@@ -1,22 +1,47 @@
 # SEQUENCE CLASS
 # ----------------------------------------------------------------------------------------------------
-class Sequence(object): # a class is a blueprint describing the objects belonging to that class
+class Sequence(object):
 
-    elements = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" # class variables are shared among all instances of the class
+    monomers = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     sequence_type = "sequence"
 
-    def __init__(self, sequence): # the init method can also be considered as a constructor method
-        self.sequence = sequence # attributes are instance variables
+    def __init__(self, sequence):
 
-    def print_sequence(self): # a method inside of a class automatically takes the instance as its first argument
-        return self.sequence
+        for i in sequence:
+            if i not in self.monomers:
+                raise ValueError("Invalid Sequence")
+
+        self.sequence = sequence
+
+    @property
+    def length(self):
+        return len(self.sequence)
+
+    def monomer_occurrences(self):
+        occurrences = {}
+        for i in self.monomers:
+            occurrences[i] = 0
+        for i in self.sequence:
+            occurrences[i] += 1
+        output = ""
+        for i in self.monomers:
+            output += str(occurrences[i]) + " "
+        return output[:-1]
+
+# DNA CLASS
+# ----------------------------------------------------------------------------------------------------
+class DNA(Sequence):
+
+    monomers = "ACGT"
+    sequence_type = "DNA"
 
 # APPLICATION
 # ----------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
-    
-    seqOne = Sequence("ATATCGG") # the init method is run automatically whenever a new instance of a class is created
-    seqTwo = Sequence("TATCGGTATCGCGCG")
 
-    for i in Sequence.elements:
-        print(i)
+    # ask user for sequence
+    sequence = input("Please enter your sequence : ")
+
+    # sequence analysis
+    seqOne = DNA(sequence)
+    print(seqOne.monomer_occurrences())
