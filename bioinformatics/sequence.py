@@ -1,5 +1,6 @@
 # IMPORTING LIBRARIES
 # ----------------------------------------------------------------------------------------------------
+import pandas as pd
 import os
 
 # SEQUENCE CLASS
@@ -42,37 +43,36 @@ class Sequence(object):
     @classmethod
     def fasta(cls, file):
 
-        with open(file, 'r') as f:
-            lines_of_text = f.readlines()
+        if not os.path.exists(file) == True:
+            raise ValueError("Invalid File Path")
 
-        lines_of_text.append('$\n')
+        data = pd.read_csv(file, header = None)
+        end = pd.Series(['END'])
+        fasta = data[0].append(end, ignore_index = True)
         sequences = []
-        label, description, sequence = '', '', ''
+        sequence, label, description = '', '', ''
 
-        for i in range(len(lines_of_text)):
+        for i in range(len(fasta)):
 
-            if lines_of_text[i][0] == '$':
+            if fasta.iloc[i][0] == '>' or fasta.iloc[i] == 'END':
 
-                break
+                if not i == 0:
+                    sequences.append(cls(sequence = sequence, label = label, description = description))
+                    sequence, label, description = '', '', ''
 
-            elif lines_of_text[i + 1][0] == '>' or lines_of_text[i + 1][0] == '$':
+                if fasta.iloc[i] == 'END':
+                    break
 
-                sequences.append(cls(sequence = sequence, label = label, description = description))
-                label, description, sequence = '', '', ''
-
-            elif lines_of_text[i][0] == '>':
-
-                label_description = lines_of_text[i].split(' ', 1)
-
-                if len(label_description) > 1:
-                    label = label_description[0][1:]
-                    description = label_description[1][:-1]
                 else:
-                    label = label_description[0][1:-1]
+                    label_description = fasta.iloc[i].split(' ', 1)
+                    if len(label_description) > 1:
+                        label = label_description[0][1:]
+                        description = label_description[1]
+                    else:
+                        label = label_description[0][1:]
 
             else:
-
-                sequence += lines_of_text[i][:-1]
+                sequence += fasta.iloc[i]
 
         return sequences
 
@@ -115,7 +115,8 @@ class RNA(Sequence):
 if __name__ == "__main__":
 
     # ask user for sequence
-    sequence = input("Please enter your sequence : ")
+    file = input("Please enter your sequence : ")
+    sequences = DNA.fasta(file)
 
-    seqOne = DNA(sequence = sequence)
-    print(seqOne.reverse_complement())
+    # sequence analysis
+    print(sequences)
