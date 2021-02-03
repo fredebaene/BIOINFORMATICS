@@ -9,7 +9,7 @@ class Sequence(object):
 
     monomers = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-    def __init__(self, sequence, label = None, description = None):
+    def __init__(self, sequence, label=None, description=None):
 
         for i in sequence:
             if i not in self.monomers:
@@ -46,9 +46,9 @@ class Sequence(object):
         if os.path.exists(file) == False:
             return 'Invalid File Path'
 
-        data = pd.read_csv(file, header = None)
-        end = pd.Series(['END'], name = 'end')
-        fasta = data[0].append(end, ignore_index = True)
+        data = pd.read_csv(file, header=None)
+        end = pd.Series(['END'], name='end')
+        fasta = data[0].append(end, ignore_index=True)
         sequences = []
         sequence, label, description = '', '', ''
 
@@ -57,7 +57,7 @@ class Sequence(object):
             if fasta.iloc[i][0] == '>' or fasta.iloc[i] == 'END':
 
                 if not i == 0:
-                    sequences.append(cls(sequence = sequence, label = label, description = description))
+                    sequences.append(cls(sequence=sequence, label=label, description=description))
                     sequence, label, description = '', '', ''
 
                 if fasta.iloc[i] == 'END':
@@ -121,7 +121,7 @@ class DNA(Sequence):
             else:
                 rna_sequence += 'U'
 
-        return RNA(sequence = rna_sequence)
+        return RNA(sequence=rna_sequence)
 
     def reverse_complement(self):
 
@@ -135,7 +135,7 @@ class DNA(Sequence):
 
     @property
     def gc_content(self):
-        return self.content(list_of_monomers = ['C', 'G'])
+        return self.content(list_of_monomers=['C', 'G'])
 
 # RNA CLASS
 # ----------------------------------------------------------------------------------------------------
